@@ -1,0 +1,301 @@
+# 13.1- 13,4
+
+def counter():
+    num = 0
+
+    def incrementer():
+        nonlocal num
+        num += 1
+        return num
+        return incrementer
+
+
+x = 'Hi'
+
+
+def read_x():
+    print(x)  # x is just referenced, therefore assumed global
+    read_x()  # prints Hi
+
+
+def read_x_local_fail():
+    if False:
+        x = 'Hey'  # x appears in an assignment, therefore it's local
+        print(x)  # will look for the _local_ z, which is not assigned, and will not be found
+
+
+read_x_local_fail()  # UnboundLocalError: local variable 'x' referenced before assignment
+x = 'Hi'
+
+
+def change_local_x():
+    global x
+    x = 'Bye'
+    print(x)
+    change_local_x()  # prints Bye print(x)  # prints Hi
+
+
+def foo():
+    a = 5
+    print(a)  # ok
+
+
+# print(a) # NameError: name 'a' is not defined
+def foo():
+    if True:
+        a = 5
+    print(a)  # ok
+
+
+b = 3
+
+
+def bar():
+    if False:
+        b = 5
+    print(b)  # UnboundLocalError: local variable 'b' referenced before assignment
+
+
+# 13.5
+
+x = 5
+print(x)  # out: 5
+del x
+
+
+class A:
+    pass
+
+
+a = A()
+a.x = 7
+print(a.x)  # out: 7
+del a.x
+# print(a.x)  # error: AttributeError: 'A' object has no attribute 'x'
+
+
+x = {'a': 1, 'b': 2}
+del x['a']
+print(x)  # out: {'b': 2}
+# print(x['a']) # error: KeyError: 'a'
+
+x = [0, 1, 2, 3, 4]
+del x[1:3]
+print(x)  # out: [0, 3, 4]
+
+a = 'global'
+
+
+class Fred:
+    a = 'class'  # class scope
+    b = (a for i in range(10))  # function scope
+    c = [a for i in range(10)]  # function scope
+    d = a  # class scope
+    e = lambda: a  # function scope
+    f = lambda a=a: a  # default argument uses class scope
+
+    @staticmethod  # or @classmethod, or regular instance method
+    def g():  # function scope
+        return a
+
+
+print(Fred.a)  # class
+print(next(Fred.b))  # global
+print(Fred.c[0])  # class in Python 2, global in Python 3
+print(Fred.d)  # class
+print(Fred.e())  # global
+print(Fred.f())  # class
+print(Fred.g())  # global
+
+
+
+
+# 14
+
+n = 5
+"Hello" if n > 10 else "Goodbye" if n > 5 else "Good day"
+
+number = 5
+if number > 2:
+    print("Number is bigger than 2.")
+elif number < 2:  # Optional clause (you can have multiple elifs)
+    print("Number is smaller than 2.")
+else:  # Optional clause (you can only have one else)
+    print("Number is 2.")
+
+# ['equal', 'greater than', 'less than', ][cmp(x, y)]
+# x,y = 1,1 output: 'equal'
+# x,y = 1,2 output: 'less than'
+# x,y = 2,1 output: 'greater than'
+
+
+if True:
+    print("It is true!")
+else:
+    print("This won't get printed..")
+# Output: It is true!
+if False:
+    print("This won't get printed..")
+else:
+    print("It is false!")
+
+
+# 15
+
+a = 'Python is fun!'
+b = 'Python is fun!'
+a == b # returns True
+a is b # returns False
+a = [1, 2, 3, 4, 5]
+b = a # b references a
+a == b # True
+a is b # True
+b = a[:] # b now references a copy of a
+a == b # True
+a is b # False [!!]
+
+12 == 12
+# True
+12 == 1
+# False
+'12' == '12'
+# True
+'spam' == 'spam'
+# True
+'spam' == 'spam '
+# False
+'12' == 12
+# False
+
+
+class Foo(object):
+ def __init__(self, item):
+   self.my_item = item
+ def __eq__(self, other):
+   return self.my_item == other.my_item
+
+a = Foo(5)
+b = Foo(5)
+a == b # True
+a != b # False
+a is b # False
+
+
+class Bar(object):
+ def __init__(self, item):
+   self.other_item = item
+ def __eq__(self, other):
+  return self.other_item == other.other_item
+ def __ne__(self, other):
+  return self.other_item != other.other_item
+
+
+i = 0
+while i < 7:
+ print(i)
+ if i == 4:
+  print("Breaking from loop")
+ break
+ i += 1
+
+for i in (0, 1, 2, 3, 4):
+ print(i)
+ if i == 2:
+  break
+
+for i in (0, 1, 2, 3, 4, 5):
+ if i == 2 or i == 4:
+  continue
+  print(i)
+
+  while True:
+      for i in range(1, 5):
+          if i == 2:
+               break  # Will only break out of the inner loop!
+
+def break_loop():
+ for i in range(1, 5):
+  if (i == 2):
+   return(i)
+   print(i)
+ return(5)
+
+
+for index, item in enumerate(['one', 'two', 'three', 'four']):
+ print(index, '::', item)
+
+
+for i in range(3):
+ print(i)
+else:
+ print('done')
+i = 0
+while i < 3:
+ print(i)
+ i += 1
+else:
+ print('done')
+
+
+for i in range(2):
+ print(i)
+ if i == 1:
+  break
+else:
+ print('done')
+
+ while x == y:
+     pass
+
+
+d = {"a": 1, "b": 2, "c": 3}
+
+for key in d.keys():
+ print(key)
+
+ for value in d.values():
+      print(value)
+
+ for key, value in d.items():
+    print(key, "::", value)
+
+
+a = 10
+while True:
+  a = a-1
+  print(a)
+  if a<7:
+   break
+print('Done.')
+
+
+collection = [('a', 'b', 'c'), ('x', 'y', 'z'), ('1', '2', '3')]
+
+for item in collection:
+ i1 = item[0]
+ i2 = item[1]
+ i3 = item[2]
+
+lst = ['alpha', 'bravo', 'charlie', 'delta', 'echo']
+for s in lst:
+   print(s[:1]) # print the first letter
+
+   for idx, s in enumerate(lst):
+       print("%s has an index of %d" % (s, idx))
+
+       for s in lst[1::2]:
+           print(s)
+       for i in range(1, len(lst), 2):
+           print(lst[i])
+
+i = 0
+while i < 4:
+ #loop statements
+ i = i + 1
+
+import cmath
+complex_num = cmath.sqrt(-1)
+while complex_num: # You can also replace complex_num with any number, True or a value of any
+
+ print(complex_num) # Prints 1j forever
+
