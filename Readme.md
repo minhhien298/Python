@@ -1,7 +1,6 @@
 
 
 
-Ghi lai dieu can hoc 
 
 [Ghi lai dieu can hoc ](https://www.w3schools.com/python/)
 
