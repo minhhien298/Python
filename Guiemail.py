@@ -1,3 +1,4 @@
+import smtplib
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
@@ -19,7 +20,7 @@ try:
     encoders.encode_base64(part)
     part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
     msg.attach(part)
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP('smtp.dreamhost.com', 587)
     server.starttls()
     server.login(fromaddr, "epN*TCwd")
     text = msg.as_string()
