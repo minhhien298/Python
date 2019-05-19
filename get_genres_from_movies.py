@@ -11,8 +11,6 @@ import csv
             genres = row[2].split('|')
             genre_set |= set(genres)
             line_count += 1
-    print(genre_set)
-    print(f'Processed {line_count} lines.')
     listphim = list(genre_set)
     print(listphim)
     print(f'Processed {line_count} lines.')

@@ -17,5 +17,6 @@ with open('sample/movies.csv', encoding="utf8") as csv_file:
                     pass
             except ValueError:
                 print(f"{line_count} - {film}")
+                #passe
         line_count += 1
     print(f'Processed {line_count} lines.')
