@@ -1,3 +1,4 @@
+import smtplib
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
@@ -12,14 +13,14 @@ msg['Subject'] = "TIÊU ĐỀ CỦA MAIL (SUBJECT)"
 body = "NỘI DUNG MAIL"
 try:
     msg.attach(MIMEText(body, 'plain'))
-    filename = './input/melbourne-housing-snapshot/melb_data.csv'
+    filename = './Excel/Book1.xlsx'
     attachment = open(filename, "rb")
     part = MIMEBase('application', 'octet-stream')
     part.set_payload((attachment).read())
     encoders.encode_base64(part)
     part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
     msg.attach(part)
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP('smtp.saomaisoft.com', 587)
     server.starttls()
     server.login(fromaddr, "epN*TCwd")
     text = msg.as_string()
