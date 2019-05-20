@@ -17,16 +17,39 @@ with open('sample/movies.csv', encoding="utf8") as csv_file:
     print(listphim)
     print(f'Processed {line_count} lines.')
 
-    myDict = {}
-    myDict['tentheloai'] = list(genre_set)
+def checklist(T):
+ if 'Thriller'in T:
+     return True
 
-    count = 0
+listso = []
+
+
+line_count1 = 0
+counts = 0
+with open('sample/movies.csv', encoding="utf8") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
     for row in csv_reader:
-        if(row[2].split('|') in myDict['tentheloai']):
-            count += 1
-            myDict['solan'].add(count)
-            print(count)
+        if line_count1 == 0:
+            line_count1 += 1
+        elif(checklist(row[2].split('|'))== True ):
+            counts += 1
+    listso.append(counts)
+    print(listso)
 
+
+
+
+
+#     listso.append(str(sum(checklist(str(row[2].split('|'))) == True for row in csv_reader)))
+
+
+
+
+
+
+
+
+print(listso)
 
 
 
