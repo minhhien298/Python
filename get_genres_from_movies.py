@@ -17,6 +17,15 @@ with open('sample/movies.csv', encoding="utf8") as csv_file:
     print(listphim)
     print(f'Processed {line_count} lines.')
 
+
+
+
+
+
+
+
+
+
 def checklist(T):
  if 'Thriller'in T:
      return True

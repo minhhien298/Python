@@ -8,10 +8,12 @@ def get_max_from_dic(dictionary):
         if val > max_count:
             key_has_max_count = key
             max_count = val
+    return key_has_max_count, max_count
 
 
 # Liệt kê tất cả genre film
 def main():
+    with open('sample/movies.csv', encoding="utf8") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         genre_dic = dict()
