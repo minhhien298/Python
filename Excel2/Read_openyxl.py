@@ -1,4 +1,4 @@
-from openpyexcel import load_workbook
+from openpyxl import load_workbook
 wb = load_workbook('DanhSach.xlsx', read_only=True)
 print(wb.sheetnames)
 print(wb.active)
