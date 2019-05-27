@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d824f41-ea21-402d-88c0-c1d924232b21" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,7 +8,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/list files.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -105,7 +103,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.list files" />
       </list>
     </recent_temporary>
   </component>
@@ -114,18 +111,17 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3d824f41-ea21-402d-88c0-c1d924232b21" name="Default Changelist" comment="" />
-      <created>1557931459732</created>
+      <changelist id="af702209-05a0-4dd1-8090-934f5b3cc45b" name="Default Changelist" comment="" />
+      <created>1558246578714</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1557931459732</updated>
+      <updated>1558246578714</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12328767" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
