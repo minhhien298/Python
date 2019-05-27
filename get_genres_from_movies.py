@@ -1,6 +1,5 @@
 import csv
 
-with open('sample/movies.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
     genre_set = set()
@@ -12,5 +11,53 @@ with open('sample/movies.csv') as csv_file:
             genres = row[2].split('|')
             genre_set |= set(genres)
             line_count += 1
-    print(genre_set)
+
+    listphim = list(genre_set)
+    print(listphim)
     print(f'Processed {line_count} lines.')
+
+
+
+
+
+
+
+
+
+
+def checklist(T):
+ if 'Thriller'in T:
+     return True
+
+listso = []
+
+
+line_count1 = 0
+counts = 0
+with open('sample/movies.csv', encoding="utf8") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    for row in csv_reader:
+        if line_count1 == 0:
+            line_count1 += 1
+        elif(checklist(row[2].split('|'))== True ):
+            counts += 1
+    listso.append(counts)
+    print(listso)
+
+
+
+
+
+#     listso.append(str(sum(checklist(str(row[2].split('|'))) == True for row in csv_reader)))
+
+
+
+
+
+
+
+
+print(listso)
+
+
+
