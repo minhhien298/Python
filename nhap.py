@@ -1,41 +1,12 @@
-import csv
+import matplotlib.pyplot as plt
 
-with open('sample/movies.csv', encoding="utf8") as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
-    genre_set = set()
-    for row in csv_reader:
-        if line_count == 0:
-            print(f'Column names are {", ".join(row)}')
-            line_count += 1
-        else:
-            genres = row[2].split('|')
-            genre_set |= set(genres)
-            line_count += 1
+data = {1940: 120, 1941: 122, 1942: 130, 1943: 110, 1944:154, 1945: 165, 1946: 134,
+        1947: 128, 1948: 180, 1949: 170, 1950:180, 1951:192} # Tạo dictionary
+year = list(data.keys())
+films = list(data.values())
 
-    listphim = list(genre_set)
-    print(listphim)
-    print(f'Processed {line_count} lines.')
+plt.plot(year, films)
+plt.title("Drama Film by year")
 
-def checklist(T):
- if 'Thriller'in T:
-     return True
-
-listso = []
-
-
-
-counts = 0
-with open('sample/movies.csv', encoding="utf8") as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    for row in csv_reader:
-     if(checklist(row[2].split('|'))== True ):
-            counts += 1
-    listso.append(counts)
-    print(listso)
-
-#     listso.append(str(sum(checklist(str(row[2].split('|'))) == True for row in csv_reader)))
-
-
-
-
+plt.legend()
+plt.show()

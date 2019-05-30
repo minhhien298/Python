@@ -16,7 +16,7 @@ for i in range(sheet.ncols):
 
 # In ra dòng số 3
 print(sheet.row_values(2))
-print(sheet.row_values(2)[1])  #Lấy ra Họ Đệm
+print(sheet.row_values(2)[1])  # Lấy ra Họ Đệm
 
 print(sheet.col_values(1))
 
