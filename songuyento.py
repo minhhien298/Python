@@ -11,7 +11,7 @@ for num in range(1,101):
 def  phuongtrinhbac2():
  	a, b, c = 0
 	d = b**2-4*a*c
-	if (d<0 || a = 0): 
+	if (d<0 or a = 0): 
    print("VO NGHIEM")
 	elif (d==0): 
    print("X = ", -b/(2*a))
