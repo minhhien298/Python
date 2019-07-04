@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
-df = pd.read_csv("Excel2/OfficeSupplies.csv")
+
+df = pd.read_csv("OfficeSupplies.csv")
 df.shape  # In ra kích thước dữ liệu (5000, 14) 5000 dòng, 14 cột
 df.head(6)  # Trả dữ liệu mẫu, mặc định là 5 dòng đầu tiên
 df.dtypes  # In ra kiểu dữ liệu từng cột
@@ -18,8 +20,13 @@ df["Total Price"] = df["Units"] * df["Unit Price"]
 df.head()
 
 # Lần này sort theo Total Price chứ không theo Units nữa
-df.groupby("Rep").sum().sort_values("Total Price", ascending=False).head()
+print(df.groupby("Rep").sum().sort_values("Total Price", ascending=False).head())
 
-#
-group = df.groupby(["Region", "Rep"]).sum()
-print(group)
+# Doanh số theo vùng
+sales_by_region = df.groupby(["Region"])['Total Price'].sum()
+print(sales_by_region) # In ra debug
+
+# Vẽ đồ thị
+sales_by_region.plot(kind='bar', legend=True)
+
+plt.show()

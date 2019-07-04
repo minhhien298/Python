@@ -1,0 +1,128 @@
+import datetime
+import csv
+
+class Person(object):     # Định nghĩa một class
+    species = "Homo Sapiens"  # Định nghĩa một thuộc tính
+
+    def __init__(self, name, birth_year):   # Constructor - hàm khởi tạo
+        self.name = name
+        self.birth_year = birth_year
+
+    def __str__(self):          # overload special method __str__, method có trong mọi class
+        return self.name
+
+    def rename(self, renamed):
+        self.name = renamed
+        print("Now my name is {}".format(self.name))
+
+    def speak(self, text):
+        print(f"{self.name} says {text}")
+
+    def age(self):
+        now = datetime.datetime.now()
+        return now.year - self.birth_year
+
+
+
+
+kelly = Person("Kelly", 1920)
+joseph = Person("Joseph", 1945)
+john_doe = Person("John Doe", 1978)
+
+print(kelly)
+
+
+kelly.rename("Harris")
+print(kelly)
+print(kelly.species)
+kelly.speak("hello world")
+print(john_doe.age())
+
+kelly.rename("Harris")
+print(kelly)
+print(kelly.species)
+kelly.speak("hello world")
+
+class A(object):
+    def __init__(self, num):
+        self.num = num
+
+    def __add__(self, other):  # Đây là một hàm toán tử sẵn có trong Python, chỉ cần overload là dùng được
+        return A(self.num + other.num)
+
+
+def get_num(self):
+    return self.num
+
+
+# Gán một hàm vào một thuộc tính rất là tùy tiện
+A.get_num = get_num
+
+a = A(10)
+a2 = A(15)
+b = a + a2
+
+print(b.get_num())
+
+
+class Employee:
+    # Initializing
+    def __init__(self):
+        print('Employee created.')
+
+    # Deleting (Calling destructor)
+    def __del__(self):
+        print('Destructor called, Employee deleted.')
+
+
+obj = Employee()
+del obj
+
+
+class Car:
+    def __init__(self, color, model, year):
+        self.color = color
+        self.model = model
+        self.year = year
+
+    def __str__(self):
+        return f'Car {self.color} : {self.model} : {self.year}'
+
+    def __eq__(self, other):
+        return self.year == other.year
+
+    def __lt__(self, other):
+        return self.year < other.year
+
+    def __add__(self, other):
+        return Car(self.color + other.color,
+                   self.model + other.model,
+                   int(self.year) + int(other.year))
+
+
+my_car = Car("yellow", "Beetle", "1966")
+your_car = Car("red", "Corvette", "1967")
+
+print(my_car < your_car)
+
+print(my_car > your_car)
+
+print(my_car == your_car)
+
+print(my_car + your_car)
+
+cars =[
+    Car("yellow", "Beetle", "1966"),
+    Car("black", "Toyota", "1954"),
+    Car("red", "Ford Mutang ", "1966"),
+    Car("white", "For Ranger", "1967"),
+]
+
+cars.sort()
+for car in cars:
+    print(car)
+
+with open('sample/nhapabc.csv','w', newline='') as myfile:
+    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+    wr.writerow(cars)
+
