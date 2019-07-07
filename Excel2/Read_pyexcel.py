@@ -1,3 +1,4 @@
+y# Cài đặt pip install pyexcel, pyexcel-xls
 # pyexcel khá dễ dùng nhưng không hỗ trợ Formula
 
 import pyexcel as p
