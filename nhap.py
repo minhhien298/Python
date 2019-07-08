@@ -97,6 +97,10 @@ def dieukien(array):
     # print(start)
     print(array[start:stop])
 
+def reverseInParentheses(inputString):
+    print(inputString.replace("(", "").replace(")", "")[::-1])
+
+
 
 if __name__ == "__main__":
 
@@ -110,3 +114,4 @@ if __name__ == "__main__":
   khoangcach([3, -2, 1, 3, 1, 1, -3, 4, 3, -10, 2])
   # dudoan()
   dieukien([3, 2, 1, 2, 3, 4, 6, 8, 7, 4, 5, 10, 11, 12, 15, 16, 17, 18, 22, 18, 17])
+  reverseInParentheses("(bar)")
