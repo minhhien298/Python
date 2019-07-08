@@ -80,7 +80,22 @@ def dudoan():
         print("lon qua ")
 
 
+def dieukien(array):
+    mangtam4 =[]
+    for i in range(1,int(len(array))):
+        if (array[i] < array[i-1]):
+            mangtam4.append(i)
+    print(mangtam4)
+    mangtam5 = []
+    for i in range(1,int(len(mangtam4))):
+        mangtam5.append(mangtam4[i] - mangtam4[i-1])
+        if (mangtam4[i] - mangtam4[i-1]) == max(mangtam5):
+           start = mangtam4[i-1]
+    stop = max(mangtam5) + start
 
+    # print(indexcut)
+    # print(start)
+    print(array[start:stop])
 
 
 if __name__ == "__main__":
