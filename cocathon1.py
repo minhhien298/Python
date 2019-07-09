@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-print(f"__name__ = {__name__}, __file__ = {__file__}")
-avar = 10  # biến global
-
-if __name__ == "__main__":
-    print("File1 is being run directly")
-else:
-    # Nếu được file khác import đoạn này sẽ chạy
-    print("File1 is being imported")
-=======
 def fibo(n: int) -> int:
  if n <= 1:
   return n
@@ -36,8 +25,8 @@ def reverse_for_loop(s: str) -> str:
 
 def chap2mang(array1,array2):
     array3 = array1 + array2
-    array3.sort(key = int, reverse = False)
-    # print(array3)
+    array3.sort()
+    print(array3)
 
 #Cho một mảng gồm N số tự nhiên m = [1, 4, 2, 3, 6, 7, 8, 5, 9, 12, 2, 4]
 #1.1. Hãy tính tổng các phần tử thuộc m
@@ -91,12 +80,37 @@ def dudoan():
         print("lon qua ")
 
 
+def sortByHeight(a):
+    l = sorted([i for i in a if i != -1])
+    for i in [i for i, j in enumerate(a) if j == -1]:
+        l.insert(i,-1)
+    print(l)
+
+# 3. Tìm chuỗi ngày doanh thu phát triển liên tục dài nhấtSS
+
+def dieukien(array):
+    mangtam4 =[]
+    for i in range(1,int(len(array))):
+        if (array[i] < array[i-1]):
+            mangtam4.append(i)
+    print(mangtam4)
+    mangtam5 = []
+    for i in range(1,int(len(mangtam4))):
+        mangtam5.append(mangtam4[i] - mangtam4[i-1])
+        if (mangtam4[i] - mangtam4[i-1]) == max(mangtam5):
+           start = mangtam4[i-1]
+    stop = max(mangtam5) + start
+
+    # print(indexcut)
+    # print(start)
+    print(array[start:stop])
+
 
 
 
 if __name__ == "__main__":
 
- # print(chap2mang([4,7,9],[1,6,8]))
+  chap2mang([4,7,9],[1,6,8])
   tongcuamang([1, 4, 2, 3, 6, 7, 8, 5, 9, 12, 2, 4])
   timlonnhat([1, 4, 2, 3, 6, 7, 8, 5, 9, 12, 2, 4])
   timtrungbinh([1, 4, 2, 3, 6, 7, 8, 5, 9, 12, 2, 4])
@@ -104,5 +118,6 @@ if __name__ == "__main__":
   botrubglao([1, 4, 2, 3, 6, 7, 8, 5, 9, 12, 2, 4])
   print(list(dict.fromkeys([1, 4, 2, 3, 6, 7, 8, 5, 9, 12, 2, 4])))
   khoangcach([3, -2, 1, 3, 1, 1, -3, 4, 3, -10, 2])
-  dudoan()
->>>>>>> d3e1edadf950ad9fb58a4184a15fd735dc109b68
+ # dudoan()
+  sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180])
+
