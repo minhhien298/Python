@@ -23,8 +23,6 @@ def pi(N):
     print(sum*4)
 
 #Cho file sales100.csv hãy đọc file này và trả về các kết quả sau đây:
-#Liệt kê tất cả các region, sắp xếp A-Z và chỉ hiển thị mỗi region một lần.
-#Tương tự liệt kê tất cả các item type, sắp xếp A-Z và chỉ hiển thị mỗi region một lần.
 
 import csv
 
@@ -34,29 +32,48 @@ with open('sample/sales100.csv', encoding="utf8") as csv_file:
     revenueBF = 0
     genre_setregion = set()
     genre_setitem = set()
+    genre_dic = dict()
     for row in csv_reader:
         if line_count == 0:
             # print(f'Column names are {", ".join(row)}')
             line_count += 1
         else:
+
+            # Liệt kê tất cả các region, sắp xếp A-Z và chỉ hiển thị mỗi region một lần.
             genres = row[1].split('|')
             #revenu = int(row[12].split('|'))
+
+            # Tương tự liệt kê tất cả các item type, sắp xếp A-Z và chỉ hiển thị mỗi region một lần.
             genre_setregion |= set(genres)
             genres2 = row[2].split('|')
+
+            # Tính tổng doanh thu Total Revenue của item type "Baby Food" trên tất cả các dòng
             if genres2 == ['Baby Food']:
-                revenueBF += float(''.join(row[12].split('|')))
+                revenueBF += float(''.join(row[11].split('|')))
             genre_setitem |= set(genres2)
+
+            # Đối với từng item type, sau khi sắp xếp A-Z hãy tính tổng doanh thu TotaRevenue
+            for genres2 in genre_setitem:
+                if genre_dic.get(genres2) is None:
+                    genre_dic[genres2] = 1
+                else:
+                    # genre_dic[genres2] = int(genre_dic.get(genres2)) + 1
+                    genre_dic[genres2] += float(''.join(row[12].split('|')))
+
+
             line_count += 1
-    listphim = list(sorted(genre_setregion, key=str.lower, reverse=True))
-    listitem = list(sorted(genre_setitem, key=str.lower, reverse=True))
+    listphim = list(sorted(genre_setregion))
+    listitem = list(sorted(genre_setitem))
+
     print(listphim)
     print(listitem)
     print(revenueBF)
+    print(genre_dic)
 
 
 
-#Tính tổng doanh thu Total Revenue của item type "Baby Food" trên tất cả các dòng
-#Đối với từng item type, sau khi sắp xếp A-Z hãy tính tổng doanh thu TotaRevenue
+
+
 
 
 
