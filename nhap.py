@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 A = [3, 2, 1, 2, 3, 4, 6, 8, 7, 4, 5, 10, 11, 12, 15, 16, 17, 18, 22, 18, 17]
 
 k = 0
@@ -45,3 +46,29 @@ while k < len(A):
 
 
 print(result)
+=======
+import csv
+import operator
+with open('sample/sales100.csv', encoding="utf8") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    # sortedlist = sorted(csv_reader, key=operator.itemgetter(12), reverse=True)
+    sortedlist = sorted(csv_reader, key=lambda row: row[12], reverse=True)
+    line_count = 0
+    for row in sortedlist:
+        if line_count == 0:
+            print(f'Column names are {", ".join(row)}')
+            line_count += 1
+        else:
+            print(f'\t{row[0]} - {row[1]} - {row[12]}.')
+            line_count += 1
+    print(f'Processed {line_count} lines.')
+
+
+
+
+
+
+    # luc phim theo nam
+    # cac phim khong lap lai
+    # the loai phim nao co nhieu phim nhat, the loai it nhat
+>>>>>>> 12d54dd6792692cc188e3fe3c3276116b35b3041
