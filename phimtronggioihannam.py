@@ -26,7 +26,7 @@ def checkYear(a,b):
 
 # Liệt kê tất cả genre film
 def main():
-    with open('sample/movies.csv') as csv_file:  #Mở file csv ra
+    with open('sample/movies.csv', encoding="utf8") as csv_file:  #Mở file csv ra
         csv_reader = csv.reader(csv_file, delimiter=',')  #đọc file csv với delimiter '
         line_count = 0
         genre_dic = dict()  # Khởi tạo một dictionary
