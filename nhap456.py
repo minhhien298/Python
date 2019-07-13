@@ -1,7 +1,20 @@
 import csv
 
-with open('sample/sales100.csv', encoding="utf8") as csv_file:
-    csv_reader = csv.reader(csv_file)  # đọc file csv
+with open('sample/sales100.csv', mode='r', encoding="utf8") as in_file:
+    csv_reader = csv.reader(in_file)  # đọc file csv
+    next(csv_reader, None)
+    #data = list(csv_reader)
+    #row_count = len(data)
+    #with open('sample/sales100.csv', mode='w', encoding="utf8") as outfile:
+        #writer = csv.writer(outfile)
+    mydict = {rows[2]:rows[11] for rows in csv_reader}
+
+
+print(mydict)
+#print(row_count)
+
+
+'''
     region_set = set()
     item_set = set()
     count = 0
@@ -23,3 +36,4 @@ with open('sample/sales100.csv', encoding="utf8") as csv_file:
     print(sorted(region_set))
     print(sorted(item_set))
     print(genre_dic)
+'''
