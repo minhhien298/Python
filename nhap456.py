@@ -1,7 +1,5 @@
 import csv
 
-with open('sample/sales100.csv', encoding="utf8") as csv_file:
-    csv_reader = csv.reader(csv_file)  # đọc file csv
     region_set = set()
     item_set = set()
     count = 0
