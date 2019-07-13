@@ -1,16 +1,28 @@
 import csv
+from collections import defaultdict
+result = defaultdict(int)
 
-with open('sample/sales100.csv', mode='r', encoding="utf8") as in_file:
+with open('sample/sales100.csv', encoding="utf8") as in_file:
     csv_reader = csv.reader(in_file)  # đọc file csv
     next(csv_reader, None)
-    #data = list(csv_reader)
-    #row_count = len(data)
-    #with open('sample/sales100.csv', mode='w', encoding="utf8") as outfile:
-        #writer = csv.writer(outfile)
-    mydict = {rows[2]:rows[11] for rows in csv_reader}
+
+    for row in csv_reader:
+        key = row[2]
+        if key in result:
+            pass
+        result[key] += float(''.join(row[11].split('|')))
+print(sorted(result.items(), key=lambda kv: kv[0]))
+
+# https://stackoverflow.com/questions/14091387/creating-a-dictionary-from-a-csv-file
+# https://stackoverflow.com/questions/6740918/creating-a-dictionary-from-a-csv-file
 
 
-print(mydict)
+
+
+# data = list(csv_reader)
+# row_count = len(data)
+# with open('sample/sales100.csv', mode='w', encoding="utf8") as outfile:
+# writer = csv.writer(outfile)
 #print(row_count)
 
 
