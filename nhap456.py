@@ -23,3 +23,4 @@ with open('sample/sales100.csv', encoding="utf8") as csv_file:
     print(sorted(region_set))
     print(sorted(item_set))
     print(genre_dic)
+'''
