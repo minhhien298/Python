@@ -53,12 +53,6 @@ with open('sample/sales100.csv', encoding="utf8") as csv_file:
             genre_setitem |= set(genres2)
 
             # Đối với từng item type, sau khi sắp xếp A-Z hãy tính tổng doanh thu TotaRevenue
-            for genres2 in genre_setitem:
-                if genre_dic.get(genres2) is None:
-                    genre_dic[genres2] = 1
-                else:
-                    # genre_dic[genres2] = int(genre_dic.get(genres2)) + 1
-                    genre_dic[genres2] += float(''.join(row[12].split('|')))
 
 
             line_count += 1
@@ -73,6 +67,46 @@ with open('sample/sales100.csv', encoding="utf8") as csv_file:
 
 
 
+result = defaultdict(int)
+
+with open('sample/sales100.csv', encoding="utf8") as in_file:
+    csv_reader = csv.reader(in_file)  # đọc file csv
+    next(csv_reader, None)
+
+    for row in csv_reader:
+        key = row[2]
+        if key in result:
+            pass
+        result[key] += float(row[11])
+print(sorted(result.items(), key=lambda kv: kv[0]))
+
+
+
+import csv
+
+with open('sales100.csv') as csv_file:  # mở file csv
+    csv_reader = csv.reader(csv_file)  # đọc file csv
+
+    count = 0
+    revenue_per_item_type = {}  # Empty dictionary
+    for row in csv_reader:  # vòng lặp for chạy từng dòng trong file
+        if count > 0:
+            if revenue_per_item_type.get(row[2]) is None:
+                revenue_per_item_type[row[2]] = float(row[11])
+            else:
+                revenue_per_item_type[row[2]] += float(row[11])
+
+        count += 1
+
+# In ra kết quả chưa sắp xếp key của dictionary
+print(revenue_per_item_type)
+
+# Sắp xếp lại dictionary
+for item_type in sorted(revenue_per_item_type.keys()):
+    print(item_type, revenue_per_item_type[item_type])
+
+# https://stackoverflow.com/questions/14091387/creating-a-dictionary-from-a-csv-file
+# https://stackoverflow.com/questions/6740918/creating-a-dictionary-from-a-csv-file
 
 
 
