@@ -67,6 +67,10 @@ with open('sample/sales100.csv', encoding="utf8") as csv_file:
 
 
 
+# Đối với từng item type, sau khi sắp xếp A-Z hãy tính tổng doanh thu TotaRevenue
+
+import csv
+from collections import defaultdict
 result = defaultdict(int)
 
 with open('sample/sales100.csv', encoding="utf8") as in_file:
