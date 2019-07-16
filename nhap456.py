@@ -1,15 +1,62 @@
-import csv
-import matplotlib.pyplot as plt
+import numpy as np
 
-x = []
-y = []
+def zigzag(n):
+    def move(i, j):
+        if j < (n - 1):
+            return max(0, i - 1), j + 1
+        else:
+            return i + 1, j
 
-with open('sample/data.csv') as csv_file:  # mở file csv
-    csv_reader = csv.reader(csv_file)  # đọc file csv
+    a = [[0] * n for _ in range(n)] #tao ma tran vuong n*n toan` 0
+    x, y = 0, 0
+    for v in range(n * n):
+        a[y][x] = v
+        if (x + y) & 1:
+            x, y = move(x, y)
+        else:
+            y, x = move(y, x)
+    return a
 
-    for row in csv_reader:  # vòng lặp for chạy từng dòng trong file
-        x.append(row[0])
-        y.append(row[1])
+print(np.matrix(zigzag(10)))
 
-plt.scatter(x, y, s=50, c='orange')
-plt.show
+
+'''
+def getMatrixSize():
+    print("Enter N size of zigzag matrix:")
+    rawN = int(input())
+    N = 5
+    if rawN is not None:
+          if rawN > 4:
+            N = rawN
+    return N
+
+def buildZigZag(N):
+    arr = []
+    num = arr
+    for k in range(1, 2*N-2):
+        if k < N:
+         start = 0
+        else:
+         start = k - N + 1
+
+    for i in range(start, (k-start)):
+        j = k-i
+        if k%2 == 0:
+            arr[j][i] = num
+        else:
+            arr[i][j] = num
+        num+=1
+    return  arr
+
+if __name__ == "__main__":
+    N1 = getMatrixSize()
+    result = buildZigZag(N1)
+    for i in range(0,N1):
+        for j in range(0,N1):
+            print('{:4}'.format(result[i][j]),
+        print())
+'''
+
+
+
+
