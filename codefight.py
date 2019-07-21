@@ -94,6 +94,22 @@ def almostIncreasingSequence(sequence):
     else:
         return False
 
+# isLucky
+def isLucky(n):
+  lst = list(str(n))
+  sochuso = len(lst)
+  nua1 = map(int, lst[:int(sochuso/2)])
+  nua2 = map(int, lst[int(sochuso/2):])
+  return sum(nua1) == sum(nua2)
+
+# sortByHeight
+def sortByHeight(a):
+    l = sorted([index for index in a if index != -1])
+    for index in [index for index, value in enumerate(a) if value == -1]:
+        l.insert(index, -1)
+    return l
+
+
 #reverseInParentheses
 def reverseInParentheses(input):
     # return inputString.replace("(", "").replace(")", "")[::-1]
@@ -106,6 +122,16 @@ def reverseInParentheses(input):
             j = mangtam.pop()
             char[j:i] = char[i:j:-1]
     return ''.join(c for c in char if c not in '()')
+
+# alternatingSums
+def alternatingSums(a):
+    return [sum(a[::2]),sum(a[1::2])]
+
+# addBorder
+def addBorder(picture):
+    l = len(picture) + 2
+    return ["*" * l] + [x.center(l, "*") for x in picture] + ["*" * l]
+
 
 
 
