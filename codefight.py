@@ -126,11 +126,51 @@ def reverseInParentheses(input):
 # alternatingSums
 def alternatingSums(a):
     return [sum(a[::2]),sum(a[1::2])]
+#areSimilarareSimilar
+from collections import Counter as C
+def areSimilar(A, B):
+    return C(A) == C(B) and sum(a != b for a, b in zip(A, B)) < 3
+
+# arrayChange
+def arrayChange(inputArray):
+    i = 1
+    sum = 0
+    while i < len(inputArray):
+        if inputArray[i] <= inputArray[i-1]:
+            sum += (inputArray[i-1] - inputArray[i]) + 1
+            inputArray[i] += (inputArray[i-1] - inputArray[i]) + 1
+        i += 1
+    return sum
 
 # addBorder
 def addBorder(picture):
     l = len(picture) + 2
     return ["*" * l] + [x.center(l, "*") for x in picture] + ["*" * l]
+
+# palindromeRearranging
+def palindromeRearranging(input):
+    dict = {}
+    for c in input:
+        if c not in dict:
+            dict[c] = 1
+        else:
+            dict[c] += 1
+
+    list = [l for l in dict if dict[l] % 2]
+    if len(list) > 1:
+        return False
+    else:
+        return True
+
+# areEquallyStrong
+def areEquallyStrong(yourLeft, yourRight, friendsLeft, friendsRight):
+    return {yourLeft, yourRight} == {friendsLeft, friendsRight}
+
+# arrayMaximalAdjacentDifference
+def arrayMaximalAdjacentDifference(a):
+    diffs=[abs(a[i]-a[i+1]) for i in range(len(a)-1)]
+    return max(diffs)
+
 
 
 
