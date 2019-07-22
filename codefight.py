@@ -171,7 +171,34 @@ def arrayMaximalAdjacentDifference(a):
     diffs=[abs(a[i]-a[i+1]) for i in range(len(a)-1)]
     return max(diffs)
 
+# isIPv4Address
+def isIPv4Address(s):
+    p = s.split('.')
+    return len(p) == 4 and all(n.isdigit() and 0 <= int(n) < 256 for n in p)
 
+# avoidObstacles
+def avoidObstacles(input):
+    i = 2
+    while True:
+        if all(x%i!=0 for x in input):
+            return i
+        i+=1
+
+# boxBlurdq
+def boxBlur(image):
+    return   [[int(sum(sum(x[i:i+3]) for x in image[j:j+3])/9) for i in range(len(image[j])-2)]for j in range(len(image)-2)]
+
+# boxBlurdq
+def boxBlur(m):
+    r = len(m)
+    c = len(m[0])
+    ans = []
+    for i in range(1,r-1):
+        row=[]
+        for j in range(1,c-1):
+            row.append(sum([m[i+k][j+l] for k in [-1,0,1] for l in [-1,0,1]])//9)
+        ans.append(row)
+    return ans
 
 
 
