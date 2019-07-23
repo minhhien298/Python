@@ -38,8 +38,10 @@ area = (30 * np.random.rand(N))**2  # 0 to 15 point radii
 plt.scatter(x,y, s=2, c='red')
 plt.show()
 
+# https://realpython.com/linear-regression-in-python/
 
-#Chuyển sang ảnh đen trắng
+
+# 2 Chuyển sang ảnh đen trắng
 #Sử dụng Gassian Blur để làm mờ ảnh
 #Gợi ý: Google tìm cách làm. Keyword: OpenCV
 import cv2 #package để xử lý ảnh
@@ -66,6 +68,36 @@ cv2.imshow('blurred black and white cat', blurBlackAndWhite)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+# 4. Job scheduling
+#Hãy viết một đoạn Python script cứ cuối mỗi ngày lúc 5:00 chiều, gửi một báo cáo cho giám đốc bằng email
+
+# Schedule Library imported
+import schedule
+import time
+import yagmail
+
+# gửi email
+def report_5pm():
+    # connect to smtp server.
+    # gõ password vào đây
+    yag_smtp_connection = yagmail.SMTP(user="nguyenhaison18@gmail.com", password="#", host='smtp.gmail.com')
+    # email subject
+    subject = 'This is everyday report at 5pm'
+    # email content with attached file path.
+    contents = ['Chào Sếp', 'Em gửi sếp báo cáo', 'demo.png']
+    # send the email
+    yag_smtp_connection.send('cuong@techmaster.vn', subject, contents)
+
+# đặt lịch 5h hàng ngày gửi email
+schedule.every().day.at("17:22").do(report_5pm)
+
+# code sẽ chạy liên tục không ngừng vì phải gửi email hàng ngày
+while True:
+    # Checks whether a scheduled task
+    # is pending to run or not
+    schedule.run_pending()
+    time.sleep(1)
 
 
 
