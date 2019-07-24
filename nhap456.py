@@ -1,5 +1,15 @@
 
+import pandas as pd
+s2 = pd.Series(['a','b','c','d'])
+print(s2)
 
+
+s3 = pd.Series(['a','b','c','d'], index=[100, 101, 102, 103])
+print(s3)
+
+
+s4 = pd.Series(['Microsoft','Google','Apple','Facebook'], index=['MSFT', 'GOL', 'APL', 'FCB'])
+print(s4)
 
 
 '''
