@@ -44,7 +44,7 @@ for sublist in l:
 
 # Count genres element
 counter_genres = Counter(flat_list)
-
+# https://vimentor.com/vi/lesson/10-loc-du-lieu-trong-pandas
 
 
 
