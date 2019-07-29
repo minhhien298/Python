@@ -7,8 +7,8 @@ movies = pd.read_csv('movies.csv', encoding="utf8")
 
 # Extract column year
 movies["year"] = movies["title"].apply(lambda x: x[-5:-1])
-movies["year2"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ") else x[-5:-1] if isinstance(x[-6:-2], int) is True else "unknown")
-
+movies["year2"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ") else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
+print(movies["year2"])
 
 cotnam = movies.year2.unique()
 cottheloaitheophim = movies.genres.apply(lambda x: x.split('|'))
@@ -18,8 +18,8 @@ uniqListphim = reduce(lambda x,y: x+[y] if not y in x else x, cotcacphim,[])
 
 
 # print(movies.year.unique())
-print(cotnam)
-print(uniqListphim)
+#print(cotnam)
+#print(uniqListphim)
 
 
 
@@ -30,7 +30,7 @@ movies_1995 = movies[movies.year == '1995']
 pd.options.mode.chained_assignment = None
 # See this https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas
 genres_list = movies_1995["genres"].apply(lambda x: x.split('|'))
-print()
+print(genres_list)
 
 flat_list = [item for sublist in genres_list for item in sublist]
 print(flat_list)
@@ -61,7 +61,6 @@ tick_labels = tuple(datacanve['index'])
 x_max = int(max(plt.xticks()[0]))  # int() to convert numpy.int32 => int
 # manually set you xtick labels
 plt.xticks(range(0, x_max + 1), tick_labels, rotation=45)
-
 plt.show()
 
 # 2. Vẽ biểu đồ line chart mô tả độ phổ biến của thể loại film
