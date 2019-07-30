@@ -23,7 +23,8 @@ counter_genres = Counter(flat_list)
 
 
 # bai 3
-movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ") and isinstance(x[-6:-2], int) is True else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
+#https://stackoverflow.com/questions/29233283/plotting-multiple-lines-with-pandas-dataframe
+movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ")  else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
 print(movies["year"])
 movies_list = movies["genres"].apply(lambda x: x.split('|'))
 movies_drama = movies[movies.genres == 'Drama']
