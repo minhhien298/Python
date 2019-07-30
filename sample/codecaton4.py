@@ -27,7 +27,8 @@ counter_genres = Counter(flat_list)
 movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ")  else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
 print(movies["year"])
 movies_list = movies["genres"].apply(lambda x: x.split('|'))
-movies_drama = movies[movies.genres == 'Drama']
+print(movies_list)
+movies_drama = movies[(movies.genres == 'Drama')|(movies.genres == 'Fantasy')]
 movies_drama1 = movies_drama[['genres','year']]
 movies_drama1 = movies_drama1.groupby(['genres', 'year']).size().reset_index(name='count')
 print(movies_drama1)
