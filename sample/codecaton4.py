@@ -28,7 +28,7 @@ movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ")  el
 print(movies["year"])
 movies_list = movies["genres"].apply(lambda x: x.split('|'))
 print(movies_list)
-movies_drama = movies[(movies.genres == 'Drama')|(movies.genres == 'Fantasy')]
+movies_drama = movies[(movies.genres == 'Drama')]# |(movies.genres == 'Fantasy')]
 movies_drama1 = movies_drama[['genres','year']]
 movies_drama1 = movies_drama1.groupby(['genres', 'year']).size().reset_index(name='count')
 print(movies_drama1)

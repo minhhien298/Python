@@ -1,4 +1,14 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+bins = [20, 25, 30, 35, 40, 45, 50, 55, 60]
+df = pd.read_csv("numpy/1000employee.csv")
+age_group = df.groupby([pd.cut(df.Age, bins)]).size()
+print(age_group)
+age_group.plot(kind='bar')
+plt.show()
 
+'''
 import pandas as pd
 s2 = pd.Series(['a','b','c','d'])
 print(s2)
@@ -10,7 +20,7 @@ print(s3)
 
 s4 = pd.Series(['Microsoft','Google','Apple','Facebook'], index=['MSFT', 'GOL', 'APL', 'FCB'])
 print(s4)
-
+'''
 
 '''
 def getMatrixSize():
