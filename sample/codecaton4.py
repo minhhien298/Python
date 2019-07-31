@@ -13,6 +13,17 @@ counter_genres = Counter(flat_list)
 print(counter_genres)
 # print(counter_genres.most_common(1))
 
+#https://stackoverflow.com/questions/29233283/plotting-multiple-lines-with-pandas-dataframe
+movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ")  else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
+# print(movies["year"])
+movies_list = movies["genres"].apply(lambda x: x.split('|'))
+# print(movies_list)
+movies_drama = movies[(movies.genres == 'Drama')|(movies.genres == 'Comedy')|(movies.genres == 'Thriller')]
+movies_drama1 = movies_drama[['genres','year']]
+movies_drama1 = movies_drama1.groupby(['genres', 'year']).size().reset_index(name='count')
+print(movies_drama1)
+
+
 '''
 # bai 2 Hãy vẽ biểu đồ bar chart, mỗi cột ứng với thể loại phim
 datacanve = pd.DataFrame.from_dict(counter_genres, orient='index').reset_index()
@@ -25,15 +36,6 @@ datacanve.plot( x = 'index',
 plt.show()
 '''
 
-#https://stackoverflow.com/questions/29233283/plotting-multiple-lines-with-pandas-dataframe
-movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ")  else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
-# print(movies["year"])
-movies_list = movies["genres"].apply(lambda x: x.split('|'))
-# print(movies_list)
-movies_drama = movies[(movies.genres == 'Drama')|(movies.genres == 'Comedy')|(movies.genres == 'Thriller')]
-movies_drama1 = movies_drama[['genres','year']]
-movies_drama1 = movies_drama1.groupby(['genres', 'year']).size().reset_index(name='count')
-print(movies_drama1)
 
 '''
 # bai 3 Hãy vẽ biểu đồ line chart mô tả tăng giảm của thể loại drama qua các năm
