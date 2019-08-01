@@ -1,7 +1,4 @@
 import pandas as pd
-from collections import Counter
-import matplotlib.pyplot as plt
-import numpy as np
 
 movies = pd.read_csv("movies.csv")
 movies2 = pd.DataFrame()

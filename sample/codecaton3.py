@@ -7,23 +7,22 @@ movies = pd.read_csv("movies.csv")
 pd.options.mode.chained_assignment = None
 genres_list = movies["genres"].apply(lambda x: x.split('|'))
 flat_list = [item for sublist in genres_list for item in sublist]
-
-# bai 1 Hãy liệt kê tất cả các thể loại phim theo tần suất xuất hiện
 counter_genres = Counter(flat_list)
 
 #https://stackoverflow.com/questions/29233283/plotting-multiple-lines-with-pandas-dataframe
 movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ")  else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
+# print(movies["year"])
 movies_list = movies["genres"].apply(lambda x: x.split('|'))
-movies_drama = movies[(movies.genres == 'Drama')|(movies.genres == 'Comedy')|(movies.genres == 'Thriller')]
+# print(movies_list)
+movies_drama = movies[(movies.genres == 'Drama')]
 movies_drama1 = movies_drama[['genres','year']]
 movies_drama1 = movies_drama1.groupby(['genres', 'year']).size().reset_index(name='count')
 
-# bai 4 Hãy vẽ biểu đô line chart mô tả tăng giảm của 3 thể loại phim phổ biến nhất qua các năm
-# https://stackoverflow.com/questions/46717359/pandas-plot-multiple-category-lines
-fig, ax = plt.subplots()
-for label, grp in movies_drama1.groupby('genres'):
-    grp.plot(x = 'year', y = 'count',ax = ax, label = label)
+
+# bai 3 Hãy vẽ biểu đồ line chart mô tả tăng giảm của thể loại drama qua các năm
+movies_drama1.plot.line( x = 'year', y='count')
+tick_labels = tuple(movies_drama1['year'])
+x_max = int(max(plt.xticks()[0]))  # int() to convert numpy.int32 => int
+# manually set you xtick labels
+plt.xticks(range(0, x_max + 1), tick_labels, rotation=45)
 plt.show()
-
-
-
