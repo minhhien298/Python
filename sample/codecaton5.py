@@ -12,9 +12,9 @@ title_keylist = title_list.apply(lambda x: [item for item in x if item not in st
 # print(title_list)
 # print(title_keylist)
 flat_listkey = [item for sublist in title_keylist for item in sublist]
-#print(flat_listkey)
+print([x.lower() for x in flat_listkey])
 # Count genres element
-counter_title = Counter(flat_listkey)
+counter_title = Counter([x.lower() for x in flat_listkey])
 print(counter_title)
 print(counter_title.most_common(10))
 

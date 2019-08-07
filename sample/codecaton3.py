@@ -7,7 +7,6 @@ movies = pd.read_csv("movies.csv")
 pd.options.mode.chained_assignment = None
 genres_list = movies["genres"].apply(lambda x: x.split('|'))
 flat_list = [item for sublist in genres_list for item in sublist]
-counter_genres = Counter(flat_list)
 
 #https://stackoverflow.com/questions/29233283/plotting-multiple-lines-with-pandas-dataframe
 movies["year"] = movies["title"].apply(lambda x: x[-6:-2] if x.endswith(" ")  else x[-5:-1] )#if isinstance(x[-6:-2], int) is True else "unknown")
