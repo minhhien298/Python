@@ -200,6 +200,25 @@ def boxBlur(m):
         ans.append(row)
     return ans
 
+# minesweeper
+def minesweeper(matrix):
+    def _3x3(i,j):
+        return (matrix[i+x][j+y] for x in {-1,0,1} if 0 <= i+x < len(matrix)
+                                 for y in {-1,0,1} if 0 <= j+y < len(matrix[0])
+                                 if not x == y == 0)
+
+    return [
+            [ sum(elem for elem in _3x3(i,j)) for j in range(len(matrix[0]))]
+             for i in range(len(matrix))
+           ]
+
+# arrayReplace
+def arrayReplace(i, e, s):
+    return [x if x!=e else s for x in i]
+# evenDigitsOnly
+def evenDigitsOnly(n):
+    return all([int(i)%2==0 for i in str(n)])
+
 
 
 
