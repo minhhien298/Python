@@ -1,0 +1,1 @@
+https://sanic.readthedocs.io/en/latest/sanic/blueprints.html

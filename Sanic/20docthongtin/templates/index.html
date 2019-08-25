@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<h1>{{greetings}}</h1>
+
+<ul>
+    {% for user in users %}
+    <li><a href="{{ user.name}}">{{ user.name }}</a></li>
+    <li><a href="{{ user.email}}">{{ user.email }}</a></li>
+    <li><a href="{{ user.mobile}}">{{ user.mobile }}</a></li>
+    {% endfor %}
+ </ul>
+</body>
+</html>

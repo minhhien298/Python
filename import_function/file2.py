@@ -1,4 +1,4 @@
-import file1
+from Python import file1
 
 
 def main():

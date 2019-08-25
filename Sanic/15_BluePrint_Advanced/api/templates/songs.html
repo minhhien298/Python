@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Songs</title>
+</head>
+<body>
+<ul>
+    {% for song in songs %}
+        <li>{{song.id}} - {{song.title}}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
