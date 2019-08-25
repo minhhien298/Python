@@ -16,6 +16,7 @@ movies_list = movies["genres"].apply(lambda x: x.split('|'))
 movies_drama = movies[(movies.genres == 'Drama')]
 movies_drama1 = movies_drama[['genres','year']]
 movies_drama1 = movies_drama1.groupby(['genres', 'year']).size().reset_index(name='count')
+print(movies_drama1)
 
 
 # bai 3 Hãy vẽ biểu đồ line chart mô tả tăng giảm của thể loại drama qua các năm

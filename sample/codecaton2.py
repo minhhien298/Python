@@ -12,6 +12,7 @@ counter_genres = Counter(flat_list)
 
 # bai 2 Hãy vẽ biểu đồ bar chart, mỗi cột ứng với thể loại phim
 datacanve = pd.DataFrame.from_dict(counter_genres, orient='index').reset_index()
+print(datacanve)
 datacanve.plot( x = 'index',
         kind='bar',    # Plot a bar chart
         legend=False,    # Turn the Legend off

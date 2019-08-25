@@ -23,7 +23,7 @@ movies_list = movies["genres"].apply(lambda x: x.split('|'))
 movies_drama = movies[(movies.genres == datacanve['index'].iloc[0])|(movies.genres == datacanve['index'].iloc[1])|(movies.genres == datacanve['index'].iloc[2])]
 movies_drama1 = movies_drama[['genres','year']]
 movies_drama1 = movies_drama1.groupby(['genres', 'year']).size().reset_index(name='count')
-print(movies_drama)
+print(movies_drama1)
 
 # bai 4 Hãy vẽ biểu đô line chart mô tả tăng giảm của 3 thể loại phim phổ biến nhất qua các năm
 # https://stackoverflow.com/questions/46717359/pandas-plot-multiple-category-lines
