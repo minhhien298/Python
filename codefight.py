@@ -215,9 +215,23 @@ def minesweeper(matrix):
 # arrayReplace
 def arrayReplace(i, e, s):
     return [x if x!=e else s for x in i]
+
 # evenDigitsOnly
 def evenDigitsOnly(n):
     return all([int(i)%2==0 for i in str(n)])
+# variableName
+def variableName(name):
+    return name.isidentifier()
+# alphabeticShift
+def alphabeticShift(inputString):
+    return ''.join((chr(ord(i)+1) if i!="z" else "a" for i in inputString))
+# chessBoardCellColor
+def chessBoardCellColor(cell1, cell2):
+    return (sum(map(ord,cell1+cell2)))%2 == 0
+
+# circleOfNumbers
+def circleOfNumbers(n, firstNumber):
+ return (firstNumber+n/2)%n
 
 
 

@@ -10,6 +10,7 @@ if img is None:
 # convert to grayscale
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # instantiate SURF
+# surf = cv2.xfeatures2d.SURF_create(7000)
 surf = cv2.xfeatures2d.SURF_create(7000)
 # compute keypoints
 keypoints = surf.detect(img_gray, None)
